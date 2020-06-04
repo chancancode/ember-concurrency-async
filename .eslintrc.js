@@ -34,6 +34,7 @@ module.exports = {
         'testem.js',
         'blueprints/*/index.js',
         'config/**/*.js',
+        'lib/**/*.js',
         'tests/dummy/config/**/*.js'
       ],
       excludedFiles: [
@@ -53,6 +54,18 @@ module.exports = {
       rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
         // add your custom rules and overrides for node files here
       })
+    },
+    {
+      files: ['fixtures/test.js'],
+      parserOptions: {
+        sourceType: 'script'
+      },
+      env: {
+        browser: false,
+        node: true
+      },
+      plugins: ['node', 'jest'],
+      extends: ['plugin:jest/recommended']
     }
   ]
 };
