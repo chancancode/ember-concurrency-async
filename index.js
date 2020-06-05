@@ -1,6 +1,7 @@
 'use strict';
 
-const { addPlugin } = require('ember-cli-babel-plugin-helpers');
+const { addPlugin, hasPlugin } = require('ember-cli-babel-plugin-helpers');
+const Plugin = require.resolve('./lib/babel-plugin-transform-ember-concurrency-async-tasks');
 
 module.exports = {
   name: require('./package').name,
@@ -8,9 +9,13 @@ module.exports = {
   included(parent) {
     this._super.included.apply(this, arguments);
 
-    addPlugin(parent, require.resolve('./lib/babel-plugin-transform-ember-concurrency-async-tasks'), {
-      after: ['@babel/plugin-transform-typescript'],
-      before: ['@babel/plugin-proposal-decorators']
-    });
+    if (!hasPlugin(parent, Plugin)) {
+      addPlugin(parent, Plugin, {
+        before: [
+          '@babel/plugin-proposal-decorators',
+          '@babel/plugin-transform-typescript'
+        ]
+      });
+    }
   }
 };

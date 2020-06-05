@@ -40,7 +40,7 @@ module('Integration | async-task-functions', function(hooks) {
       }
 
       get value() {
-        return this.myTask.value;
+        return this.myTask.last.value;
       }
     });
 
@@ -76,7 +76,7 @@ module('Integration | async-task-functions', function(hooks) {
     assert.dom('button#start').doesNotExist();
     assert.dom().doesNotContainText('Running!');
     assert.dom().containsText('Finished!');
-    assert.dom('#state').hasText('finished');
+    assert.dom('#state').hasText('idle');
     assert.dom('#value').hasText('Done!');
     assert.dom('#resolved').hasText('Wow!');
   });
