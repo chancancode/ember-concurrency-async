@@ -1,10 +1,10 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { computed, set } from '@ember/object';
 import { click, render, settled } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { task } from 'ember-concurrency-decorators';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 
 function defer() {
   let resolve, reject;
@@ -24,21 +24,24 @@ module('Integration | async-task-functions', function(hooks) {
     let { promise, resolve } = defer();
 
     this.owner.register('component:test', class extends Component {
-      @tracked resolved;
+      resolved = null;
 
       @task async myTask(arg) {
-        this.resolved = await promise;
+        set(this, 'resolved', await promise);
         return arg;
       }
 
+      @computed('myTask.performCount')
       get isWaiting() {
         return this.myTask.performCount === 0;
       }
 
+      @computed('myTask.isRunning')
       get isRunning() {
         return this.myTask.isRunning;
       }
 
+      @computed('myTask.last.value')
       get value() {
         return this.myTask.last.value;
       }
