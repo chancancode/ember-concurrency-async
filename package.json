@@ -5,9 +5,9 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "https://github.com/chancancode/ember-concurrency-async",
   "license": "MIT",
-  "author": "",
+  "author": "Godfrey Chan <godfreykfc@gmail.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
