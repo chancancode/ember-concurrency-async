@@ -183,6 +183,21 @@ If you encountered use cases that you believe should work but doesn't, please
 open an issue.
 
 
+TypeScript
+------------------------------------------------------------------------------
+
+ember-concurrency 1.2 and above comes with type definitions. If you are using
+TypeScript (or the JavaScript Language Server powered by TypeScript), you may
+want to add the following import in `types/<app name>/index.d.ts`:
+
+```js
+import 'ember-concurrency-async';
+```
+
+This augments ember-concurrency's type definitions to add support for async
+task functions. See [index.d.ts](index.d.ts).
+
+
 Contributing
 ------------------------------------------------------------------------------
 
