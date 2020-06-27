@@ -12,8 +12,10 @@ jobs:
       - name: Mirror to master
         uses: zofrex/mirror-branch@v1
         with:
+          force: false
           target-branch: master
       - name: Mirror to main
         uses: zofrex/mirror-branch@v1
         with:
+          force: false
           target-branch: main
