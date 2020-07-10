@@ -197,6 +197,59 @@ import 'ember-concurrency-async';
 This augments ember-concurrency's type definitions to add support for async
 task functions. See [index.d.ts](index.d.ts).
 
+If you are using
+[ember-concurrency-ts](https://github.com/chancancode/ember-concurrency-ts),
+you may also need to add:
+
+```ts
+import 'ember-concurrency-ts/async';
+```
+
+### Usage with `taskFor` at assignment
+
+[ember-concurrency-ts](https://github.com/chancancode/ember-concurrency-ts)
+provides a `taskFor` utility function for casting task functions to the correct
+type. `taskFor` can be
+[used at assignment](https://github.com/chancancode/ember-concurrency-ts#alternate-usage-of-taskfor)
+and is compatible with `ember-concurrency-async`:
+
+```ts
+import { task } from 'ember-concurrency-decorators';
+import { taskFor } from 'ember-concurrency-ts';
+
+class Foo {
+  bar: Promise<void>;
+
+  @task
+  myTask = taskFor(async function(this: Foo) {
+    await this.bar;
+  });
+}
+```
+
+This also works with async arrow functions, eliminating the need to type
+`this`:
+
+```ts
+import { task } from 'ember-concurrency-decorators';
+import { taskFor } from 'ember-concurrency-ts';
+
+class Foo {
+  bar: Promise<void>;
+
+  @task
+  myTask = taskFor(async () => {
+    await this.bar;
+  });
+}
+```
+
+Note that async arrow functions are transformed to non-arrow generator
+functions (arrow generator functions
+[have been proposed](https://github.com/tc39/proposal-generator-arrow-functions)
+but no Babel plugin exists for them at this time). The `this` context *is*
+bound, however, by the `@task` decorator, so `this` inside the async function
+will still refer to the containing class at runtime.
 
 Contributing
 ------------------------------------------------------------------------------
