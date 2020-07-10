@@ -1,6 +1,6 @@
 {
   "name": "ember-concurrency-async",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Async task functions for ember-concurrency",
   "keywords": [
     "ember-addon"
