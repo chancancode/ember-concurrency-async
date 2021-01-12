@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { computed, set } from '@ember/object';
 import { click, render, settled } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { task } from 'ember-concurrency-decorators';
+import { task } from 'ember-concurrency';
 import { taskFor } from 'ember-concurrency-ts';
 import Component from '@glimmer/component';
 
