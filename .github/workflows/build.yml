@@ -1,6 +1,9 @@
 name: Build
 on:
-  pull_request: {}
+  pull_request:
+    branches:
+      - master
+      - main
   push:
     branches:
       - master

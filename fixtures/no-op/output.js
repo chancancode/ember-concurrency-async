@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
-import { nope } from 'ember-concurrency-decorators';
-import * as decorators from 'ember-concurrency-decorators';
+import { nope } from 'ember-concurrency';
+import * as decorators from 'ember-concurrency';
 
 export default class FooComponent extends Component {
   async notTask() {

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import Component from '@glimmer/component';
 import { timeout } from 'ember-concurrency';
-import 'ember-concurrency-decorators';
+import 'ember-concurrency';
 
 export default class FooComponent extends Component {
   @task async hello(arg, promise, ...rest) {

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { timeout } from 'ember-concurrency';
-import * as ec from 'ember-concurrency-decorators';
+import * as ec from 'ember-concurrency';
 
 export default class FooComponent extends Component {
   @ec.task

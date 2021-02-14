@@ -6,7 +6,7 @@ uses async methods instead of generator methods:
 
 ```js
 import Component from '@glimmer/component';
-import { task } from 'ember-concurrency-decorators';
+import { task } from 'ember-concurrency';
 
 class FooComponent extends Component {
   @task async myTask(foo, bar) {
@@ -48,7 +48,7 @@ The example from earlier will be transformed into this:
 
 ```js
 import Component from '@glimmer/component';
-import { task } from 'ember-concurrency-decorators';
+import { task } from 'ember-concurrency';
 
 export default class FooComponent extends Component {
   @task *myTask(foo, bar) {
@@ -74,6 +74,10 @@ Compatibility
 * Ember CLI v2.13 or above
 * Node.js v10 or above
 
+This addon requires [ember-concurrency](https://github.com/machty/ember-concurrency)
+v2.0.0-rc.1 or higher. If you're using an earlier version of ember-concurrency
+and/or using [ember-concurrency-decorators](https://github.com/machty/ember-concurrency-decorators), you may use ember-concurrency-async < 1.0.0.
+
 
 Installation
 ------------------------------------------------------------------------------
@@ -86,8 +90,7 @@ ember install ember-concurrency-async
 Usage
 ------------------------------------------------------------------------------
 
-This addon requires the [ember-concurrency-decorators](https://github.com/machty/ember-concurrency-decorators)
-addon. Any async methods annotated with one of the task decorators, that is
+Any async methods annotated with one of the task decorators, that is
 `@task`, `@restartableTask`, `@dropTask`, `@keepLatestTask` or `@enqueueTask`,
 will be transformed into a generator function.
 
@@ -98,7 +101,7 @@ if they matches one of the known task decorator imports. For example, these
 would work:
 
 ```js
-import { task } from 'ember-concurrency-decorators';
+import { task } from 'ember-concurrency';
 
 class Foo {
   @task({ restartable: true }) async foo() {
@@ -108,7 +111,7 @@ class Foo {
 ```
 
 ```js
-import { restartableTask } from 'ember-concurrency-decorators';
+import { restartableTask } from 'ember-concurrency';
 
 class Foo {
   @restartableTask async foo() {
@@ -118,7 +121,7 @@ class Foo {
 ```
 
 ```js
-import { enqueueTask as enqueued } from 'ember-concurrency-decorators';
+import { enqueueTask as enqueued } from 'ember-concurrency';
 
 class Foo {
   @enqueued async foo() {
@@ -128,7 +131,7 @@ class Foo {
 ```
 
 ```js
-import * as ec from 'ember-concurrency-decorators';
+import * as ec from 'ember-concurrency';
 
 class Foo {
   @ec.dropTask async foo() {
@@ -140,7 +143,7 @@ class Foo {
 However, these won't:
 
 ```js
-import { restartableTask } from 'ember-concurrency-decorators';
+import { restartableTask } from 'ember-concurrency';
 
 const restartable = restartableTask;
 
@@ -152,7 +155,7 @@ class Foo {
 ```
 
 ```js
-import { enqueueTask, dropTask } from 'ember-concurrency-decorators';
+import { enqueueTask, dropTask } from 'ember-concurrency';
 
 function enqueueOrDrop() {
   if (Ember.testing) {
@@ -170,7 +173,7 @@ class Foo {
 ```
 
 ```js
-import * as ec from 'ember-concurrency-decorators';
+import * as ec from 'ember-concurrency';
 
 class Foo {
   @ec[Ember.testing ? 'dropTask' : 'enqueueTask'] async foo() {
@@ -214,7 +217,7 @@ type. `taskFor` can be
 and is compatible with `ember-concurrency-async`:
 
 ```ts
-import { task } from 'ember-concurrency-decorators';
+import { task } from 'ember-concurrency';
 import { taskFor } from 'ember-concurrency-ts';
 
 class Foo {
@@ -231,7 +234,7 @@ This also works with async arrow functions, eliminating the need to type
 `this`:
 
 ```ts
-import { task } from 'ember-concurrency-decorators';
+import { task } from 'ember-concurrency';
 import { taskFor } from 'ember-concurrency-ts';
 
 class Foo {
