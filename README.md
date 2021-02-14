@@ -74,6 +74,10 @@ Compatibility
 * Ember CLI v2.13 or above
 * Node.js v10 or above
 
+This addon requires [ember-concurrency](https://github.com/machty/ember-concurrency)
+v2.0.0-rc.1 or higher. If you're using an earlier version of ember-concurrency
+and/or using [ember-concurrency-decorators](https://github.com/machty/ember-concurrency-decorators), you may use ember-concurrency-async < 1.0.0.
+
 
 Installation
 ------------------------------------------------------------------------------
@@ -86,8 +90,7 @@ ember install ember-concurrency-async
 Usage
 ------------------------------------------------------------------------------
 
-This addon requires the [ember-concurrency](https://github.com/machty/ember-concurrency)
-addon v2.0.0-rc.1+. Any async methods annotated with one of the task decorators, that is
+Any async methods annotated with one of the task decorators, that is
 `@task`, `@restartableTask`, `@dropTask`, `@keepLatestTask` or `@enqueueTask`,
 will be transformed into a generator function.
 
