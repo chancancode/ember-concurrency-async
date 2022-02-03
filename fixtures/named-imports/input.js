@@ -1,5 +1,13 @@
 import Component from '@glimmer/component';
-import { task, restartableTask, dropTask, keepLatestTask, enqueueTask, nope, timeout } from 'ember-concurrency';
+import {
+  task,
+  restartableTask,
+  dropTask,
+  keepLatestTask,
+  enqueueTask,
+  nope,
+  timeout,
+} from 'ember-concurrency';
 
 export default class FooComponent extends Component {
   @task async hello(arg, promise, ...rest) {
