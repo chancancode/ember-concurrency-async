@@ -18,7 +18,7 @@ for (let entry of fs.readdirSync(__dirname, { withFileTypes: true })) {
           [plugin],
           ['@babel/plugin-syntax-decorators', { legacy: true }],
           ['@babel/plugin-syntax-class-properties'],
-          ['babel-plugin-recast']
+          ['babel-plugin-recast'],
         ],
       });
 

@@ -6,7 +6,7 @@ import {
   dropTask as d,
   keepLatestTask as k,
   enqueueTask as e,
-  nope as n
+  nope as n,
 } from 'ember-concurrency';
 
 export default class FooComponent extends Component {

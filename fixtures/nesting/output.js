@@ -6,7 +6,7 @@ export default class FooComponent extends Component {
   *deeplyNested() {
     return yield (async () => {
       await (async () => {
-        await (function *() {
+        await (function* () {
           yield 'foo';
         })();
       })();

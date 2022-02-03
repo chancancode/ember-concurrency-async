@@ -1,5 +1,12 @@
 import Component from '@glimmer/component';
-import { task, restartableTask, dropTask, keepLatestTask, nope, timeout } from 'ember-concurrency';
+import {
+  task,
+  restartableTask,
+  dropTask,
+  keepLatestTask,
+  nope,
+  timeout,
+} from 'ember-concurrency';
 import * as ec from 'ember-concurrency';
 
 export default class FooComponent extends Component {
@@ -19,7 +26,7 @@ export default class FooComponent extends Component {
     return arg;
   }
 
-  @(dropTask())
+  @dropTask()
   *drop(arg, promise, ...rest) {
     let result = yield promise;
     console.log('hello', result, ...rest);
@@ -27,7 +34,7 @@ export default class FooComponent extends Component {
     return arg;
   }
 
-  @(keepLatestTask({}))
+  @keepLatestTask({})
   *keepLatest(arg, promise, ...rest) {
     let result = yield promise;
     console.log('hello', result, ...rest);

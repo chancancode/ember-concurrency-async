@@ -47,14 +47,14 @@ module.exports = {
     {
       files: ['fixtures/test.js'],
       parserOptions: {
-        sourceType: 'script'
+        sourceType: 'script',
       },
       env: {
         browser: false,
-        node: true
+        node: true,
       },
       plugins: ['node', 'jest'],
-      extends: ['plugin:jest/recommended']
-    }
+      extends: ['plugin:jest/recommended'],
+    },
   ],
 };

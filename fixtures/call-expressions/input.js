@@ -1,5 +1,12 @@
 import Component from '@glimmer/component';
-import { task, restartableTask, dropTask, keepLatestTask, nope, timeout } from 'ember-concurrency';
+import {
+  task,
+  restartableTask,
+  dropTask,
+  keepLatestTask,
+  nope,
+  timeout,
+} from 'ember-concurrency';
 import * as ec from 'ember-concurrency';
 
 export default class FooComponent extends Component {
@@ -10,21 +17,25 @@ export default class FooComponent extends Component {
     return arg;
   }
 
-  @restartableTask({ maxConcurrency: 3 }) async restartable(arg, promise, ...rest) {
+  @restartableTask({ maxConcurrency: 3 }) async restartable(
+    arg,
+    promise,
+    ...rest
+  ) {
     let result = await promise;
     console.log('hello', result, ...rest);
     await timeout(1000);
     return arg;
   }
 
-  @(dropTask()) async drop(arg, promise, ...rest) {
+  @dropTask() async drop(arg, promise, ...rest) {
     let result = await promise;
     console.log('hello', result, ...rest);
     await timeout(1000);
     return arg;
   }
 
-  @(keepLatestTask({})) async keepLatest(arg, promise, ...rest) {
+  @keepLatestTask({}) async keepLatest(arg, promise, ...rest) {
     let result = await promise;
     console.log('hello', result, ...rest);
     await timeout(1000);
