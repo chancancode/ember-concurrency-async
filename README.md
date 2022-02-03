@@ -70,9 +70,9 @@ rewritten into a generator method.
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.12 or above
-* Ember CLI v2.13 or above
-* Node.js v10 or above
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
+* Node.js v12 or above
 
 This addon requires [ember-concurrency](https://github.com/machty/ember-concurrency)
 v2.0.0-rc.1 or higher. If you're using an earlier version of ember-concurrency
