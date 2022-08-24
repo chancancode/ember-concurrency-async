@@ -1,6 +1,8 @@
 ember-concurrency-async
 ==============================================================================
 
+*NOTE: [ember-concurrency v2.3.0][e-c-2.3-release] introduces a new async arrow function `task()` API (along with codemods to automatically convert your code to the new style) which is heavily influenced by and eliminates most or all of the need for this package (as well as [ember-concurrency-ts][e-c-ts]).*
+
 This addon introduces an alternative syntax for ember-concurrency tasks that
 uses async methods instead of generator methods:
 
@@ -264,3 +266,6 @@ License
 ------------------------------------------------------------------------------
 
 This project is licensed under the [MIT License](LICENSE.md).
+
+[e-c-ts]: https://github.com/chancancode/ember-concurrency-ts
+[e-c-2.3-release]: https://github.com/machty/ember-concurrency/releases/tag/2.3.0
