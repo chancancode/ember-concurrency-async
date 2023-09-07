@@ -9,19 +9,11 @@ import {
 } from 'ember-concurrency';
 
 declare module 'ember-concurrency' {
-  export type AsyncTaskFunction<T, Args extends any[]> = (...args: Args) => Promise<T>;
-
   export type AsyncTaskFunctionArgs<T extends AsyncTaskFunction<any, any[]>> =
     T extends (...args: infer A) => Promise<any> ? A : [];
 
   export type AsyncTaskFunctionReturnType<T extends AsyncTaskFunction<any, any[]>> =
     T extends (...args: any[]) => Promise<infer R> ? R : unknown;
-
-  export type TaskForAsyncTaskFunction<T extends AsyncTaskFunction<any, any[]>> =
-    Task<AsyncTaskFunctionReturnType<T>, AsyncTaskFunctionArgs<T>>;
-
-  export type TaskInstanceForAsyncTaskFunction<T extends AsyncTaskFunction<any, any[]>> =
-    TaskInstance<AsyncTaskFunctionReturnType<T>>;
 
   export interface AsyncEncapsulatedTaskDescriptor<T, Args extends any[]> {
     perform(...args: Args): Promise<T>;
