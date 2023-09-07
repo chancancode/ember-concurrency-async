@@ -33,7 +33,7 @@
     "ember-cli-babel-plugin-helpers": "^1.1.1"
   },
   "peerDependencies": {
-    "ember-concurrency": "^2.0.0-rc.1"
+    "ember-concurrency": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -57,7 +57,7 @@
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
-    "ember-concurrency": "^2.0.0-rc.1",
+    "ember-concurrency": "^2.3.0",
     "ember-concurrency-ts": "^0.2.2",
     "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.1",
